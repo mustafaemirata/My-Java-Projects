@@ -1,0 +1,52 @@
+package iilkjavaprojesiss;
+import java.util.Scanner;
+import java.util.Random;
+
+public class JavaProgrami {
+
+    public static void main(String[] args) {
+        boolean devam = true;
+        while (devam) {
+            int tahmin, can = 5;
+            Random rand = new Random();
+            Scanner scan = new Scanner(System.in);
+            int sayi = rand.nextInt(100);
+            boolean Kazanma = false;
+
+            System.out.println("Sayı tahmin oyununa hoş geldiniz.");
+            System.out.println("Lütfen 0 ile 100 arasında bir doğal sayı giriniz.");
+
+            while (can > 0) {
+                System.out.println("Tahmininiz : ");
+                tahmin = scan.nextInt();
+
+                if ((tahmin < 0) || (tahmin > 100)) {
+                    System.out.println("Lütfen 0'dan 100'e kadar olan sayılardan birisini giriniz.");
+                    continue;
+                }
+                if (tahmin == sayi) {
+                    Kazanma = true;
+                    break;
+                } else {
+                    if (tahmin < sayi) {
+                        System.out.println("Tahmin ettiğiniz sayı tutulan sayıdan küçük. Kalan can : " + --can);
+                    } else {
+                        System.out.println("Tahmin ettiğiniz sayı tutulan sayıdan büyük. Kalan can : " + --can);
+                    }
+                }
+            }
+
+            if (Kazanma) {
+                System.out.println("Tebrikler. Doğru tahmin!");
+            } else {
+                System.out.println("Başaramadınız! Tutulan sayı : " + sayi);
+            } 
+        System.out.println("Oyunu yeniden oynamak ister misiniz? (Evet için 1, Hayır için 0 giriniz)");
+            int devamSecimi = scan.nextInt();
+            if (devamSecimi == 0) {
+                devam = false;
+            }
+        }
+    }
+}
+
