@@ -1,0 +1,69 @@
+package calculator;
+import java.util.Scanner;
+
+public class Calculator {
+
+    public static void main(String[] args) {
+        boolean tekrarla = true;
+        Scanner scan = new Scanner(System.in);
+
+        while (tekrarla) {
+            System.out.println("Hesap Makinesine Hoş Geldiniz! \nLütfen yapmak istediğiniz işlemi seçin");
+            System.out.println("----- \n\n");
+            System.out.println("1. Toplama \n2. Çıkarma \n3. Bölme \n4. Çarpma \n5. Çıkış");
+            int secim = scan.nextInt();
+
+            if (secim == 5) {
+                tekrarla = false;
+                continue;
+            }
+
+            System.out.println("İlk sayıyı girin: ");
+            String input1 = scan.next();
+            double sayi1;
+            try {
+                sayi1 = Double.parseDouble(input1);
+            } catch (NumberFormatException e) {
+                System.out.println("Geçersiz giriş! Lütfen bir sayı girin.");
+                continue;
+            }
+
+            System.out.println("İkinci sayıyı girin: ");
+            String input2 = scan.next();
+            double sayi2;
+            try {
+                sayi2 = Double.parseDouble(input2);
+            } catch (NumberFormatException e) {//
+                System.out.println("Geçersiz giriş! Lütfen bir sayı girin.");
+                continue;
+            }
+
+            switch (secim) {
+                case 1:
+                    System.out.println("Toplam: " + (sayi1 + sayi2));
+                    break;
+                case 2:
+                    System.out.println("Fark: " + (sayi1 - sayi2));
+                    break;
+                case 3:
+                    if (sayi2 == 0) {
+                        System.out.println("Hata! Bölme işlemi için ikinci sayı 0 olamaz.");
+                    } else {
+                        System.out.println("Bölüm: " + (sayi1 / sayi2));
+                    }
+                    break;
+                case 4:
+                    System.out.println("Çarpım: " + (sayi1 * sayi2));
+                    break;
+                default:
+                    System.out.println("Geçersiz seçim. Lütfen geçerli bir seçenek seçin.");
+            }
+
+            System.out.println("Oyunu yeniden oynamak ister misiniz? (Evet için 1, Hayır için 0 giriniz)");
+            int devamSecimi = scan.nextInt();
+            if (devamSecimi == 0) {
+                tekrarla = false;
+            }
+        }
+    }
+}
