@@ -1,0 +1,40 @@
+8package min_max;
+import java.util.Scanner;
+
+public class min {
+
+	public static void main(String[] args) {
+		 Scanner scanner = new Scanner(System.in);
+
+	        // Kullanıcıdan 5 sayıyı girmesini iste
+	        System.out.println("Lütfen 5 sayı giriniz:");
+	        int[] numbers = new int[5];
+
+	        for (int i = 0; i < 5; i++) {
+	            System.out.print("Sayı " + (i + 1) + ": ");
+	            numbers[i] = scanner.nextInt();
+	        }
+
+	        // En büyük ve en küçük sayıları bul
+	        int min = numbers[0];
+	        int max = numbers[0];
+
+	        for (int i = 1; i < 5; i++) {
+	            if (numbers[i] < min) {
+	                min = numbers[i];
+	            }
+	            if (numbers[i] > max) {
+	                max = numbers[i];
+	            }
+	        }
+
+	        // Sonuçları ekrana yazdır
+	        System.out.println("En küçük sayı: " + min);
+	        System.out.println("En büyük sayı: " + max);
+
+	        // Scanner'ı kapat
+	        scanner.close();
+
+	}
+
+}
